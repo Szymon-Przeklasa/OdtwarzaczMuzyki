@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="OdtwarzaczMuzyki.CurrentlyPlaying" Title="CurrentlyPlaying">
+    <VerticalStackLayout Background="#274690" Spacing="25" Padding="20">
+
+        <Button x:Name="returnBtn" Text="➜" FontSize="35" WidthRequest="15" HeightRequest="15" HorizontalOptions="Start" VerticalOptions="Start" Margin="0" Padding="0" Background="Transparent" Clicked="returnBtn_Clicked"/>
+
+        <VerticalStackLayout HorizontalOptions="Center">
+            <Border StrokeThickness="0" StrokeShape="RoundRectangle 15">
+                <Image Background="#f5f3f5" WidthRequest="250" HeightRequest="250" Source="{Binding Cover}"/>
+            </Border>
+
+            <HorizontalStackLayout Margin="10,20,10,0">
+                <VerticalStackLayout>
+                    <Label Text="{Binding SongName}" FontSize="18" TextColor="#f5f3f5" FontAttributes="Bold"/>
+                    <Label Text="{Binding Artist}" FontSize="14" TextColor="#f5f3f5"/>
+                </VerticalStackLayout>
+                <Button x:Name="likeBtn" Text="🤍" FontSize="35" WidthRequest="35" HeightRequest="35" HorizontalOptions="End" Padding="0" Background="Transparent" Clicked="likeBtn_Clicked"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Spacing="5">
+            <Slider Minimum="0" Maximum="{Binding SongLengthInSeconds}" Value="0" ThumbColor="#f5f3f5" MinimumTrackColor="#f5f3f5" MaximumTrackColor="#1e2a4f"/>
+            <Grid ColumnDefinitions="*,*" Padding="5">
+                <Label Text="0:00" TextColor="#f5f3f5" FontSize="12" Grid.Column="0"/>
+                <Label Text="{Binding SongLengthFormatted}" TextColor="#f5f3f5" FontSize="12" HorizontalTextAlignment="End" Grid.Column="1"/>
+            </Grid>
+        </VerticalStackLayout>
+
+        <Grid ColumnDefinitions="Auto,*,Auto" HorizontalOptions="Center" ColumnSpacing="20">
+            <Button Text="⏮" FontSize="45" WidthRequest="60" HeightRequest="60" BackgroundColor="Transparent" Grid.Column="0" Padding="0"/>
+
+            <Button x:Name="playBtn" Clicked="playBtn_Clicked" Text="▶" FontSize="45" TextColor="#274690" WidthRequest="60" HeightRequest="60" BackgroundColor="#f5f3f5" Grid.Column="1" Padding="0" CornerRadius="100"/>
+            <Button Text="⏭" FontSize="45" WidthRequest="60" HeightRequest="60" BackgroundColor="Transparent" Grid.Column="2" Padding="0"/>
+        </Grid>
+
+    </VerticalStackLayout>
+</ContentPage>
