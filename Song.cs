@@ -13,5 +13,7 @@ namespace OdtwarzaczMuzyki
         public string? Artist { get; set; }
         public int SongLengthInSeconds { get; set; }
         public string SongLengthFormatted => $"{SongLengthInSeconds / 60}:{SongLengthInSeconds % 60:D2}";
+
+        public string? Path { get; set; }
     }
 }

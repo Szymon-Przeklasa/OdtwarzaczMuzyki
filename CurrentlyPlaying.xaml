@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="OdtwarzaczMuzyki.CurrentlyPlaying" Title="CurrentlyPlaying">
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OdtwarzaczMuzyki.CurrentlyPlaying">
     <VerticalStackLayout Background="#274690" Spacing="25" Padding="20">
-
-        <Button x:Name="returnBtn" Text="➜" FontSize="35" WidthRequest="15" HeightRequest="15" HorizontalOptions="Start" VerticalOptions="Start" Margin="0" Padding="0" Background="Transparent" Clicked="returnBtn_Clicked"/>
-
         <VerticalStackLayout HorizontalOptions="Center">
             <Border StrokeThickness="0" StrokeShape="RoundRectangle 15">
                 <Image Background="#f5f3f5" WidthRequest="250" HeightRequest="250" Source="{Binding Cover}"/>
@@ -19,17 +18,17 @@
         </VerticalStackLayout>
 
         <VerticalStackLayout Spacing="5">
-            <Slider Minimum="0" Maximum="{Binding SongLengthInSeconds}" Value="0" ThumbColor="#f5f3f5" MinimumTrackColor="#f5f3f5" MaximumTrackColor="#1e2a4f"/>
+            <Slider x:Name="songSlider" Minimum="0" Maximum="{Binding SongLengthInSeconds}" Value="0" ThumbColor="#f5f3f5" MinimumTrackColor="#f5f3f5" MaximumTrackColor="#1e2a4f" ValueChanged="Slider_ValueChanged"/>
             <Grid ColumnDefinitions="*,*" Padding="5">
-                <Label Text="0:00" TextColor="#f5f3f5" FontSize="12" Grid.Column="0"/>
-                <Label Text="{Binding SongLengthFormatted}" TextColor="#f5f3f5" FontSize="12" HorizontalTextAlignment="End" Grid.Column="1"/>
+                <Label x:Name="timePlayed" Text="0:00" TextColor="#f5f3f5" FontSize="12" Grid.Column="0"/>
+                <Label x:Name="songDurationLabel" Text="{Binding SongLengthFormatted}" TextColor="#f5f3f5" FontSize="12" HorizontalTextAlignment="End" Grid.Column="1"/>
             </Grid>
         </VerticalStackLayout>
 
         <Grid ColumnDefinitions="Auto,*,Auto" HorizontalOptions="Center" ColumnSpacing="20">
             <Button Text="⏮" FontSize="45" WidthRequest="60" HeightRequest="60" BackgroundColor="Transparent" Grid.Column="0" Padding="0"/>
 
-            <Button x:Name="playBtn" Clicked="playBtn_Clicked" Text="▶" FontSize="45" TextColor="#274690" WidthRequest="60" HeightRequest="60" BackgroundColor="#f5f3f5" Grid.Column="1" Padding="0" CornerRadius="100"/>
+            <ImageButton x:Name="playBtn" Clicked="playBtn_Clicked" Source="play.png" WidthRequest="60" HeightRequest="60" BackgroundColor="#f5f3f5" Grid.Column="1" Padding="0" CornerRadius="100"/>
             <Button Text="⏭" FontSize="45" WidthRequest="60" HeightRequest="60" BackgroundColor="Transparent" Grid.Column="2" Padding="0"/>
         </Grid>
 

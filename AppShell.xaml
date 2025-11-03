@@ -5,16 +5,22 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:OdtwarzaczMuzyki"
     Title="OdtwarzaczMuzyki"
-    FlyoutBehavior="Disabled">
+    FlyoutBehavior="Disabled"
+    Background="#274690">
 
-    <ShellContent
-    Title=""
-    ContentTemplate="{DataTemplate local:CurrentlyPlaying}"
-    Route="CurrentlyPlaying" />
     <ShellContent
         Title=""
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+    <ShellContent
+        Title=""
+        ContentTemplate="{DataTemplate local:PlaylistPage}"
+        Route="PlaylistPage" />
+    <ShellContent
+        Title=""
+        ContentTemplate="{DataTemplate local:CurrentlyPlaying}"
+        Route="CurrentlyPlaying" />
+    
     
 
 </Shell>

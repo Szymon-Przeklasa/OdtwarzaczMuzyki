@@ -2,7 +2,29 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="OdtwarzaczMuzyki.MainPage">
+    <VerticalStackLayout Background="#274690" Spacing="25" Padding="20">
 
-    
+        <HorizontalStackLayout Spacing="250">
+            <Label Text="Library" FontSize="24" TextColor="#f5f3f5" FontAttributes="Bold" VerticalOptions="Center"/>
+            <Button x:Name="createPlaylistBtn" Text="+" FontSize="30" WidthRequest="45" HeightRequest="45" BackgroundColor="#f5f3f5" TextColor="#274690" Padding="0" Clicked="CreatePlaylistBtn_Clicked"/>
+        </HorizontalStackLayout>
 
+        <VerticalStackLayout Spacing="15">
+            <CollectionView x:Name="playlistsList" SelectionMode="Single" SelectionChanged="playlistsList_SelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid BackgroundColor="#f5f3f5" Padding="10" Margin="5" ColumnDefinitions="*,Auto">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Name}" FontSize="18" TextColor="#274690" FontAttributes="Bold"/>
+                                <Label Text="{Binding SongCount, StringFormat='{0} Songs'}" FontSize="14" TextColor="#274690"/>
+                            </VerticalStackLayout>
+                            <ImageButton Source="trash.png" Clicked="deletePlaylistBtn_Clicked" WidthRequest="20" HeightRequest="20" HorizontalOptions="End" VerticalOptions="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+
+
+    </VerticalStackLayout>
 </ContentPage>
