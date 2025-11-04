@@ -21,6 +21,12 @@ namespace OdtwarzaczMuzyki
 
             _ = LoadPlaylistsAsync();
         }
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            await LoadPlaylistsAsync();
+        }
+
 
         private async void CreatePlaylistBtn_Clicked(object sender, EventArgs e)
         {
@@ -80,7 +86,7 @@ namespace OdtwarzaczMuzyki
                     if (loadedPlaylists != null)
                     {
                         Playlists.Clear();
-                        foreach (var playlist in loadedPlaylists) { Playlists.Add(playlist) };
+                        foreach (var playlist in loadedPlaylists) { Playlists.Add(playlist); };
                     }
                 }
             }

@@ -59,8 +59,10 @@ namespace OdtwarzaczMuzyki
                                 Path = path
                         });
                     }
+                    _playlist.SongCount = _playlist.Songs.Count;
 
                     await SaveSongsAsync();
+                    await UpdateMainPlaylistsFileAsync();
                 }
             }
             catch (Exception ex)
@@ -93,7 +95,7 @@ namespace OdtwarzaczMuzyki
                     if (loadedSongs != null)
                     {
                         _playlist.Songs.Clear();
-                        foreach (var song in loadedSongs) { _playlist.Songs.Add(song) };
+                        foreach (var song in loadedSongs) { _playlist.Songs.Add(song); };
                     }
                 }
             }
@@ -111,7 +113,54 @@ namespace OdtwarzaczMuzyki
 
             bool confirm = await DisplayAlert("Delete Song", $"Are you sure you want to delete \"{song.SongName}\"?", "Yes", "No");
 
-            if (confirm) _playlist.Songs.Remove(song);
+            if (confirm) {
+                _playlist.Songs.Remove(song);
+                _playlist.SongCount = _playlist.Songs.Count;
+                await SaveSongsAsync();
+                await UpdateMainPlaylistsFileAsync();
+            }
+        }
+
+        private async Task UpdateMainPlaylistsFileAsync()
+        {
+            try
+            {
+                string playlistsPath = Path.Combine(FileSystem.AppDataDirectory, "playlists.json");
+
+                if (!File.Exists(playlistsPath))
+                    return;
+
+                var json = await File.ReadAllTextAsync(playlistsPath);
+                var playlists = JsonSerializer.Deserialize<ObservableCollection<Playlist>>(json) ?? new();
+
+                var existing = playlists.FirstOrDefault(p => p.Name == _playlist.Name);
+                if (existing != null)
+                {
+                    existing.SongCount = _playlist.Songs.Count;
+                    existing.Songs = _playlist.Songs;
+                }
+
+                var updatedJson = JsonSerializer.Serialize(playlists);
+                await File.WriteAllTextAsync(playlistsPath, updatedJson);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"B³¹d aktualizacji playlist.json: {ex.Message}");
+            }
+        }
+
+
+        private async void Play_Clicked(object sender, EventArgs e)
+        {
+            if (_playlist.Songs.Count > 0)
+            {
+                var firstSong = _playlist.Songs[0];
+                await Navigation.PushAsync(new CurrentlyPlaying(firstSong));
+            }
+            else
+            {
+                await DisplayAlert("Brak Piosenek", "W playliœcie nie ma ¿adnych piosenek do odtworzenia.", "OK");
+            }
         }
     }
 

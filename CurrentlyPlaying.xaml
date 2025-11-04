@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="OdtwarzaczMuzyki.CurrentlyPlaying">
     <VerticalStackLayout Background="#274690" Spacing="25" Padding="20">
         <VerticalStackLayout HorizontalOptions="Center">
             <Border StrokeThickness="0" StrokeShape="RoundRectangle 15">
-                <Image Background="#f5f3f5" WidthRequest="250" HeightRequest="250" Source="{Binding Cover}"/>
+                <Image Background="#f5f3f5" WidthRequest="250" HeightRequest="250" Source="music.png"/>
             </Border>
 
-            <HorizontalStackLayout Margin="10,20,10,0">
+            <Grid Margin="10,20,10,0">
                 <VerticalStackLayout>
+                    <toolkit:MediaElement x:Name="Player" Source="{Binding Path}" IsVisible="False" StateChanged="Player_CurrentStateChanged"/>
                     <Label Text="{Binding SongName}" FontSize="18" TextColor="#f5f3f5" FontAttributes="Bold"/>
                     <Label Text="{Binding Artist}" FontSize="14" TextColor="#f5f3f5"/>
                 </VerticalStackLayout>
                 <Button x:Name="likeBtn" Text="🤍" FontSize="35" WidthRequest="35" HeightRequest="35" HorizontalOptions="End" Padding="0" Background="Transparent" Clicked="likeBtn_Clicked"/>
-            </HorizontalStackLayout>
+            </Grid>
         </VerticalStackLayout>
 
         <VerticalStackLayout Spacing="5">
@@ -26,10 +28,10 @@
         </VerticalStackLayout>
 
         <Grid ColumnDefinitions="Auto,*,Auto" HorizontalOptions="Center" ColumnSpacing="20">
-            <Button Text="⏮" FontSize="45" WidthRequest="60" HeightRequest="60" BackgroundColor="Transparent" Grid.Column="0" Padding="0"/>
+            <Button x:Name="prevBtn" Text="⏮" FontSize="45" WidthRequest="60" HeightRequest="60" BackgroundColor="Transparent" Grid.Column="0" Padding="0" Clicked="prevBtn_Clicked"/>
 
-            <ImageButton x:Name="playBtn" Clicked="playBtn_Clicked" Source="play.png" WidthRequest="60" HeightRequest="60" BackgroundColor="#f5f3f5" Grid.Column="1" Padding="0" CornerRadius="100"/>
-            <Button Text="⏭" FontSize="45" WidthRequest="60" HeightRequest="60" BackgroundColor="Transparent" Grid.Column="2" Padding="0"/>
+            <ImageButton x:Name="playBtn" Clicked="playBtn_Clicked" Source="play.png" WidthRequest="60" HeightRequest="60" BackgroundColor="#f5f3f5" Grid.Column="1" Padding="10,0,5,0" CornerRadius="100"/>
+            <Button x:Name="nextBtn" Text="⏭" FontSize="45" WidthRequest="60" HeightRequest="60" BackgroundColor="Transparent" Grid.Column="2" Padding="0" Clicked="nextBtn_Clicked"/>
         </Grid>
 
     </VerticalStackLayout>

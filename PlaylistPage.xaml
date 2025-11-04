@@ -4,7 +4,7 @@
              x:Class="OdtwarzaczMuzyki.PlaylistPage">
     <VerticalStackLayout BackgroundColor="#274690" Spacing="20" Padding="20">
         <Label x:Name="playlistNameLabel" FontSize="24" TextColor="#f5f3f5" FontAttributes="Bold" HorizontalOptions="Center"/>
-        <Button Text="▶ Play" FontSize="20" BackgroundColor="#f5f3f5" TextColor="#274690" WidthRequest="120" HorizontalOptions="Center"/>
+        <Button Text="▶ Play" FontSize="20" BackgroundColor="#f5f3f5" TextColor="#274690" WidthRequest="120" HorizontalOptions="Center" Clicked="Play_Clicked"/>
         <Button Text="+ Add Song" FontSize="20" BackgroundColor="#f5f3f5" TextColor="#274690" WidthRequest="150" HorizontalOptions="Center" Clicked="AddSong_Clicked"/>
 
         <CollectionView x:Name="songsList" BackgroundColor="#f5f3f5">

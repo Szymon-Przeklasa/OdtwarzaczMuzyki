@@ -1,71 +1,111 @@
 ﻿using CommunityToolkit.Maui.Core;
-using System.Collections.ObjectModel;
-using System.Text.Json;
 using CommunityToolkit.Maui.Media;
-using CommunityToolkit.Maui.Views;
+using System;
 
-namespace OdtwarzaczMuzyki;
-
-public partial class CurrentlyPlaying : ContentPage
+namespace OdtwarzaczMuzyki
 {
-    public bool like = false;
-    public bool play = false;
-	public CurrentlyPlaying()
-	{
-		InitializeComponent();
-
-        var song = new Song
-        {
-            Cover = "dotnet_bot.png",
-            SongName = "Imagine",
-            Artist = "John Lennon",
-            SongLengthInSeconds = 183
-        };
-
-        BindingContext = song;
-    }
-    private void likeBtn_Clicked(object sender, EventArgs e)
+    public partial class CurrentlyPlaying : ContentPage
     {
-        if(like == false)
+        public bool play = false;
+        public bool like = false;
+        private Song _song;
+
+        public CurrentlyPlaying(Song song)
         {
-            like = true;
-            likeBtn.Text = "❤";
-        } else
-        {
-            like = false;
-            likeBtn.Text = "🤍";
+            InitializeComponent();
+
+            _song = song;
+            BindingContext = _song;
+
+            Player.Source = _song.Path;
+            Player.Play();
+
+            songSlider.Maximum = _song.SongLengthInSeconds;
         }
-    }
 
-    private async void playBtn_Clicked(object sender, EventArgs e)
-    {
-        int sliderValue = (int)songSlider.Value;
-        string songdurationValue = songDurationLabel.Text;
-        string[] songdParts = songdurationValue.Split(":");
-        int minutes = Int32.Parse(songdParts[0]);
-        int seconds = Int32.Parse(songdParts[1]);
-        int songDuration = (minutes * 60) + seconds;
-        string songdFormatted = $"{songDuration / 60}:{songDuration % 60:D2}";
-        while (play == false)
+        private void likeBtn_Clicked(object sender, EventArgs e)
         {
-            play = true;
-            playBtn.Source = "pause.png";
-            for(int i = sliderValue; i < songDuration; i++)
+            if (like == false)
             {
-                songSlider.Value = i;
-                songDurationLabel.Text = songdFormatted;
-                await Task.Delay(1000);
+                like = true;
+                likeBtn.Text = "❤";
             }
-        } 
-        play = false;
-        playBtn.Source = "play.png";
+            else
+            {
+                like = false;
+                likeBtn.Text = "🤍";
+            }
+        }
 
-    }
+        private void playBtn_Clicked(object sender, EventArgs e)
+        {
+            
+            /* int sliderValue = (int)songSlider.Value;
+            string songdurationValue = songDurationLabel.Text;
+            string[] songdParts = songdurationValue.Split(":");
+            int minutes = Int32.Parse(songdParts[0]);
+            int seconds = Int32.Parse(songdParts[1]);
+            int songDuration = (minutes * 60) + seconds; */
 
-    private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
-    {
-        int sliderValue = (int) songSlider.Value;
-        string sliderFormatted = $"{sliderValue / 60}:{sliderValue % 60:D2}";
-        timePlayed.Text = sliderFormatted;
+            if (!play)
+            {
+                play = true;
+                playBtn.Source = "pause.png";
+                playBtn.Padding = new Thickness(5,2);
+
+                //logika grania piosenki
+                
+            }
+            else
+            {
+                play = false;
+                playBtn.Source = "play.png";
+                playBtn.Padding = new Thickness(10,0,5,0);
+
+                //logika zatrzymywania piosenki
+            }
+        }
+
+
+        private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            int sliderValue = (int)songSlider.Value;
+            int minutes = sliderValue / 60;
+            int seconds = sliderValue % 60;
+            string sliderFormatted = $"{minutes}:{seconds:D2}";
+            timePlayed.Text = sliderFormatted;
+
+            if (play)
+            {
+                Player.SeekTo(TimeSpan.FromSeconds(sliderValue));
+            }
+        }
+
+        private async void Player_CurrentStateChanged(object sender, EventArgs e)
+        {
+            if (Player.CurrentState == MediaElementState.Playing)
+            {
+                while (Player.CurrentState == MediaElementState.Playing)
+                {
+                    songSlider.Value = Player.Position.TotalSeconds;
+
+                    int sliderValue = (int)songSlider.Value;
+                    string sliderFormatted = $"{sliderValue / 60}:{sliderValue % 60:D2}";
+                    timePlayed.Text = sliderFormatted;
+
+                    await Task.Delay(1000);
+                }
+            }
+        }
+
+        private void prevBtn_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nextBtn_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

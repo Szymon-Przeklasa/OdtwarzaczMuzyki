@@ -16,7 +16,7 @@
                         <Grid BackgroundColor="#f5f3f5" Padding="10" Margin="5" ColumnDefinitions="*,Auto">
                             <VerticalStackLayout>
                                 <Label Text="{Binding Name}" FontSize="18" TextColor="#274690" FontAttributes="Bold"/>
-                                <Label Text="{Binding SongCount, StringFormat='{0} Songs'}" FontSize="14" TextColor="#274690"/>
+                                <Label Text="{Binding SongCount, StringFormat='Song count: {0}'}" FontSize="14" TextColor="#274690"/>
                             </VerticalStackLayout>
                             <ImageButton Source="trash.png" Clicked="deletePlaylistBtn_Clicked" WidthRequest="20" HeightRequest="20" HorizontalOptions="End" VerticalOptions="Center"/>
                         </Grid>

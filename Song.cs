@@ -8,7 +8,6 @@ namespace OdtwarzaczMuzyki
 {
     public class Song
     {
-        public ImageSource? Cover { get; set; }
         public string? SongName { get; set; }
         public string? Artist { get; set; }
         public int SongLengthInSeconds { get; set; }
