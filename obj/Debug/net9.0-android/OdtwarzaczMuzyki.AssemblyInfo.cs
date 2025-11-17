@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OdtwarzaczMuzyki")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+27c19f76f4ccee438655613da513f5a2ee9dde30")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+2a56ee6f68d59f7755a6492793fa915b0d67de45")]
 [assembly: System.Reflection.AssemblyProductAttribute("OdtwarzaczMuzyki")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OdtwarzaczMuzyki")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tlkfOp8cSI4=",
+  "dgSpecHash": "xsu4pKEpM/Q=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Student\\Desktop\\.NET-MAUI\\OdtwarzaczMuzyki\\OdtwarzaczMuzyki.csproj",
+  "projectFilePath": "C:\\Users\\Student\\Desktop\\OdtwarzaczMuzyki\\OdtwarzaczMuzyki.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Student\\.nuget\\packages\\googlegson\\2.13.0.1\\googlegson.2.13.0.1.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\microsoft.extensions.configuration\\9.0.5\\microsoft.extensions.configuration.9.0.5.nupkg.sha512",
@@ -29,6 +29,8 @@
     "C:\\Users\\Student\\.nuget\\packages\\microsoft.web.webview2\\1.0.3179.45\\microsoft.web.webview2.1.0.3179.45.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\microsoft.windows.sdk.buildtools\\10.0.22621.756\\microsoft.windows.sdk.buildtools.10.0.22621.756.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\microsoft.windowsappsdk\\1.7.250513003\\microsoft.windowsappsdk.1.7.250513003.nupkg.sha512",
+    "C:\\Users\\Student\\.nuget\\packages\\plugin.maui.audio\\4.0.0\\plugin.maui.audio.4.0.0.nupkg.sha512",
+    "C:\\Users\\Student\\.nuget\\packages\\taglibsharp\\2.3.0\\taglibsharp.2.3.0.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\xamarin.android.glide\\4.16.0.12\\xamarin.android.glide.4.16.0.12.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\xamarin.android.glide.annotations\\4.16.0.12\\xamarin.android.glide.annotations.4.16.0.12.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\xamarin.android.glide.disklrucache\\4.16.0.12\\xamarin.android.glide.disklrucache.4.16.0.12.nupkg.sha512",

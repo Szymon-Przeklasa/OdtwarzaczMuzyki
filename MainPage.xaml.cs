@@ -21,12 +21,12 @@ namespace OdtwarzaczMuzyki
 
             _ = LoadPlaylistsAsync();
         }
+
         protected override async void OnAppearing()
         {
             base.OnAppearing();
             await LoadPlaylistsAsync();
         }
-
 
         private async void CreatePlaylistBtn_Clicked(object sender, EventArgs e)
         {
@@ -49,7 +49,7 @@ namespace OdtwarzaczMuzyki
         private async void deletePlaylistBtn_Clicked(object sender, EventArgs e)
         {
             var button = (ImageButton)sender;
-            var playlist = (Playlist) button.BindingContext;
+            var playlist = (Playlist)button.BindingContext;
 
             bool confirm = await DisplayAlert("Delete Playlist", $"Are you sure you want to delete \"{playlist.Name}\"?", "Yes", "No");
             if (confirm)
@@ -57,11 +57,13 @@ namespace OdtwarzaczMuzyki
                 Playlists.Remove(playlist);
 
                 var playlistFilePath = Path.Combine(FileSystem.AppDataDirectory, $"{playlist.Name}.json");
-                if (File.Exists(playlistFilePath)) File.Delete(playlistFilePath);
+                if (File.Exists(playlistFilePath))
+                    File.Delete(playlistFilePath);
 
                 await SavePlaylistsAsync();
             }
         }
+
         private async Task SavePlaylistsAsync()
         {
             try
@@ -74,6 +76,7 @@ namespace OdtwarzaczMuzyki
                 Console.WriteLine($"Błąd zapisu playlist: {ex.Message}");
             }
         }
+
         private async Task LoadPlaylistsAsync()
         {
             try
@@ -86,7 +89,8 @@ namespace OdtwarzaczMuzyki
                     if (loadedPlaylists != null)
                     {
                         Playlists.Clear();
-                        foreach (var playlist in loadedPlaylists) { Playlists.Add(playlist); };
+                        foreach (var playlist in loadedPlaylists)
+                            Playlists.Add(playlist);
                     }
                 }
             }
@@ -101,10 +105,8 @@ namespace OdtwarzaczMuzyki
             if (e.CurrentSelection.FirstOrDefault() is Playlist selectedPlaylist)
             {
                 await Navigation.PushAsync(new PlaylistPage(selectedPlaylist));
-
                 ((CollectionView)sender).SelectedItem = null;
             }
         }
-
     }
 }

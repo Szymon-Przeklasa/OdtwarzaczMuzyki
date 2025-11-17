@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Student\\Desktop\\.NET-MAUI\\OdtwarzaczMuzyki\\OdtwarzaczMuzyki.csproj": {}
+    "C:\\Users\\Student\\Desktop\\OdtwarzaczMuzyki\\OdtwarzaczMuzyki.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Student\\Desktop\\.NET-MAUI\\OdtwarzaczMuzyki\\OdtwarzaczMuzyki.csproj": {
+    "C:\\Users\\Student\\Desktop\\OdtwarzaczMuzyki\\OdtwarzaczMuzyki.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Student\\Desktop\\.NET-MAUI\\OdtwarzaczMuzyki\\OdtwarzaczMuzyki.csproj",
+        "projectUniqueName": "C:\\Users\\Student\\Desktop\\OdtwarzaczMuzyki\\OdtwarzaczMuzyki.csproj",
         "projectName": "OdtwarzaczMuzyki",
-        "projectPath": "C:\\Users\\Student\\Desktop\\.NET-MAUI\\OdtwarzaczMuzyki\\OdtwarzaczMuzyki.csproj",
+        "projectPath": "C:\\Users\\Student\\Desktop\\OdtwarzaczMuzyki\\OdtwarzaczMuzyki.csproj",
         "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Student\\Desktop\\.NET-MAUI\\OdtwarzaczMuzyki\\obj\\",
+        "outputPath": "C:\\Users\\Student\\Desktop\\OdtwarzaczMuzyki\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [
@@ -80,6 +80,14 @@
               "target": "Package",
               "version": "[9.0.8, )",
               "autoReferenced": true
+            },
+            "Plugin.Maui.Audio": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
+            "TagLibSharp": {
+              "target": "Package",
+              "version": "[2.3.0, )"
             }
           },
           "imports": [
@@ -119,6 +127,14 @@
               "target": "Package",
               "version": "[9.0.8, )",
               "autoReferenced": true
+            },
+            "Plugin.Maui.Audio": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
+            "TagLibSharp": {
+              "target": "Package",
+              "version": "[2.3.0, )"
             }
           },
           "imports": [
@@ -158,6 +174,14 @@
               "target": "Package",
               "version": "[9.0.8, )",
               "autoReferenced": true
+            },
+            "Plugin.Maui.Audio": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
+            "TagLibSharp": {
+              "target": "Package",
+              "version": "[2.3.0, )"
             }
           },
           "imports": [
@@ -192,6 +216,14 @@
             "Microsoft.Maui.Controls": {
               "target": "Package",
               "version": "[9.0.82, )"
+            },
+            "Plugin.Maui.Audio": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
+            "TagLibSharp": {
+              "target": "Package",
+              "version": "[2.3.0, )"
             }
           },
           "imports": [

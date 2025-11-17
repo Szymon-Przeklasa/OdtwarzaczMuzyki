@@ -155,7 +155,7 @@ namespace OdtwarzaczMuzyki
             if (_playlist.Songs.Count > 0)
             {
                 var firstSong = _playlist.Songs[0];
-                await Navigation.PushAsync(new CurrentlyPlaying(firstSong));
+                await Navigation.PushAsync(new CurrentlyPlaying(_playlist.Songs, 0));;
             }
             else
             {
